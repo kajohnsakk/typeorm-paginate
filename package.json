@@ -1,0 +1,31 @@
+{
+  "name": "typeorm-paginate",
+  "version": "1.0.0",
+  "description": "Easy typeorm pagination",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kajohnsakk/typeorm-paginate.git"
+  },
+  "keywords": [
+    "typeorm-paginate",
+    "typeorm",
+    "paginate",
+    "pagination"
+  ],
+  "author": "Kajohnsak.K",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kajohnsakk/typeorm-paginate/issues"
+  },
+  "homepage": "https://github.com/kajohnsakk/typeorm-paginate#readme",
+  "dependencies": {
+    "typeorm": "^0.3.7",
+    "typescript": "^4.7.4"
+  }
+}

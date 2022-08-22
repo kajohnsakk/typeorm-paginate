@@ -13,7 +13,7 @@ export interface IPaginationOptions {
   pageSize?: number;
   sortBy?: string;
   searchableColumns: string[];
-  usedCaseSensitiveSearchSearch?: boolean;
+  usedCaseSensitiveSearch?: boolean;
   customQuery?: any;
   relations?: object
 }
@@ -32,7 +32,7 @@ export const pagination = async ({ repository, opts }: IPagination) => {
     searchableColumns = [],
     relations = {},
     customQuery = {},
-    usedCaseSensitiveSearchSearch = true,
+    usedCaseSensitiveSearch = true,
   } = opts;
 
   page = Number(page);
@@ -47,7 +47,7 @@ export const pagination = async ({ repository, opts }: IPagination) => {
   }
 
   const [items, totalItems] = await repository.findAndCount({
-    where: transformSearchColumn(search, searchableColumns, usedCaseSensitiveSearchSearch),
+    where: transformSearchColumn(search, searchableColumns, usedCaseSensitiveSearch),
     order,
     take,
     skip,

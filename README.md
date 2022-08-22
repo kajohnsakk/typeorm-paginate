@@ -1,3 +1,5 @@
+Typeorm pagination plugin for nodejs
+
 ## Installation
 
 ```

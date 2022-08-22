@@ -4,17 +4,18 @@ export interface IPaginationQuery {
   search?: string;
   page?: number;
   pageSize?: number;
-  sort?: string;
+  sortBy?: string;
 }
 
 export interface IPaginationOptions {
   search?: string;
   page?: number;
   pageSize?: number;
-  sort?: string;
-  searchColumns: string[];
-  usedCaseSensitive?: boolean;
+  sortBy?: string;
+  searchableColumns: string[];
+  usedCaseSensitiveSearchSearch?: boolean;
   customQuery?: any;
+  relations?: object
 }
 
 export interface IPagination {
@@ -27,10 +28,11 @@ export const pagination = async ({ repository, opts }: IPagination) => {
     search = "",
     pageSize = 10,
     page = 1,
-    sort,
-    searchColumns = [],
+    sortBy,
+    searchableColumns = [],
+    relations = {},
     customQuery = {},
-    usedCaseSensitive = true,
+    usedCaseSensitiveSearchSearch = true,
   } = opts;
 
   page = Number(page);
@@ -40,15 +42,16 @@ export const pagination = async ({ repository, opts }: IPagination) => {
   const skip = (page - 1) * pageSize;
 
   let order = {};
-  if (sort) {
-    order = transformSortColumn(sort);
+  if (sortBy) {
+    order = transformSortColumn(sortBy);
   }
 
   const [items, totalItems] = await repository.findAndCount({
-    where: transformSearchColumn(search, searchColumns, usedCaseSensitive),
+    where: transformSearchColumn(search, searchableColumns, usedCaseSensitiveSearchSearch),
     order,
     take,
     skip,
+    relations,
     ...customQuery,
   });
 
@@ -77,10 +80,10 @@ export const pagination = async ({ repository, opts }: IPagination) => {
 const transformSearchColumn = (
   search: string,
   columns: string[],
-  usedCaseSensitive: boolean
+  usedCaseSensitiveSearch: boolean
 ) => {
   const columnSearch: any = {};
-  const LIKE = usedCaseSensitive ? ILike : Like;
+  const LIKE = usedCaseSensitiveSearch ? ILike : Like;
 
   columns.forEach((column) => {
     columnSearch[column] = LIKE(`%${search}%`);

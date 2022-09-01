@@ -3,11 +3,11 @@
     "target": "es2016",
     "module": "commonjs",
     "declaration": true,
+    "incremental": true,
     "outDir": "dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "sourceMap": true
   },
   "exclude": [
     "node_modules",

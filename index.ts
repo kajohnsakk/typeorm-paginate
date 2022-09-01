@@ -12,7 +12,7 @@ export interface IPaginationOptions {
   page?: number;
   pageSize?: number;
   sortBy?: string;
-  searchableColumns: string[];
+  searchableColumns?: string[];
   usedCaseSensitiveSearch?: boolean;
   customQuery?: any;
   relations?: object

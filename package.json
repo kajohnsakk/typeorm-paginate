@@ -1,11 +1,11 @@
 {
   "name": "typeorm-paginate",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Easy typeorm pagination",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc --build --clean",
+    "build": "tsc --build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

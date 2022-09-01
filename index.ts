@@ -82,14 +82,13 @@ const transformSearchColumn = (
   columns: string[],
   usedCaseSensitiveSearch: boolean
 ) => {
-  const columnSearch: any = {};
   const LIKE = usedCaseSensitiveSearch ? ILike : Like;
+  
+  const columnsSearch = columns.map((column) => ({
+    [column]:LIKE(`%${search}%`)
+  }));
 
-  columns.forEach((column) => {
-    columnSearch[column] = LIKE(`%${search}%`);
-  });
-
-  return columnSearch;
+  return columnsSearch;
 };
 
 const transformSortColumn = (sort: string) => {
